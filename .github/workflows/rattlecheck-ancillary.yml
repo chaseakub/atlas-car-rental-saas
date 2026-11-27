@@ -1,0 +1,21 @@
+name: Starter baseline suite
+on:
+  push:
+    branches:
+      - qa/baseline-suite-20261127
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install dependencies from the starter lockfile
+        run: |
+          node --version
+          npm ci --no-audit --no-fund
+      - name: Run the starter's own suite
+        run: npm run verify
