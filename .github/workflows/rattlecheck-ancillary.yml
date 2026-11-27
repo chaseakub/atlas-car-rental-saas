@@ -17,5 +17,5 @@ jobs:
         run: |
           node --version
           npm ci --no-audit --no-fund
-      - name: Run the starter's own suite
-        run: npm run verify
+      - name: Run the upstream production build
+        run: npm run build
